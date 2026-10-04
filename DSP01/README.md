@@ -19,8 +19,9 @@
 ## Part B：RC 低通濾波器
 ### 背景
 在此 RC 電路中
+
 $$
-R=1000\ \Omega, \qquad
+R=1000,
 C=\frac{1}{2\pi}\cdot\frac{1}{400}\cdot\frac{1}{1000}\ \mathrm{F}
 $$
 
@@ -83,13 +84,7 @@ $$
 H(s) = \frac{1}{1+RCs} = \frac{1}{1+\tau s}.
 $$
 
-輸入訊號的 Laplace Transform 為
-
-$$
-\mathcal{L}\left\{e^{j\Omega t}u(t)\right\} = \frac{1}{s-j\Omega}.
-$$
-
-因此輸出訊號在 $s$ domain 中可以表示為
+輸出訊號在 $s$ domain 中可以表示為
 
 $$
 Y(s) = H(s)X(s).
@@ -252,7 +247,7 @@ $$
 
 ---
 
-#### Case 1：$f=100$ Hz
+#### Case 1：f=100 Hz
 
 當
 
@@ -292,7 +287,7 @@ $$
 
 ---
 
-#### Case 2：$f=400$ Hz
+#### Case 2：f=400 Hz
 
 當
 
@@ -344,7 +339,7 @@ $$
 
 ---
 
-#### Case 3：$f=3000$ Hz
+#### Case 3：f=3000 Hz
 
 當
 
@@ -439,7 +434,7 @@ $$
 
 ---
 
-#### Case 1：$f=100$ Hz
+#### Case 1：f=100 Hz
 
 當
 
@@ -471,7 +466,7 @@ $$
 
 ---
 
-#### Case 2：$f=400$ Hz
+#### Case 2：f=400 Hz
 
 當
 
@@ -503,7 +498,7 @@ $$
 
 ---
 
-#### Case 3：$f=3000$ Hz
+#### Case 3：f=3000 Hz
 
 當
 
@@ -623,7 +618,7 @@ $$
 
 ---
 
-#### 1. $f_s=4000$ Hz
+#### 1. f_s=4000 Hz
 
 當
 
@@ -643,7 +638,7 @@ $$
 \boxed{H(\omega)=\frac{1}{1+\frac{5}{\pi}(1-e^{-j\omega})}}
 $$
 
-##### Case 1：$f=100$ Hz
+##### Case 1 f=100 Hz
 
 $$
 \omega=\frac{2\pi(100)}{4000}=\frac{\pi}{20}
@@ -657,7 +652,7 @@ $$
 \boxed{y[n]\approx 0.9528e^{j\left(\frac{\pi}{20}n-13.72°\right)}}
 $$
 
-##### Case 2：$f=400$ Hz
+##### Case 2 f=400 Hz
 
 $$
 \omega=\frac{2\pi(400)}{4000}=\frac{\pi}{5}
@@ -671,7 +666,7 @@ $$
 \boxed{y[n]\approx 0.6231e^{j\left(\frac{\pi}{5}n-35.66°\right)}}
 $$
 
-##### Case 3：$f=3000$ Hz
+##### Case 3：f=3000 Hz
 
 $$
 \omega=\frac{2\pi(3000)}{4000}=\frac{3\pi}{2}
@@ -701,7 +696,7 @@ $$
 
 ---
 
-#### 2. $f_s=8000$ Hz
+#### 2. f_s=8000 Hz
 
 當
 
@@ -721,7 +716,7 @@ $$
 \boxed{H(\omega)=\frac{1}{1+\frac{10}{\pi}(1-e^{-j\omega})}}
 $$
 
-##### Case 1：$f=100$ Hz
+##### Case 1：f=100 Hz
 
 $$
 \omega=\frac{2\pi(100)}{8000}=\frac{\pi}{40}
@@ -731,7 +726,7 @@ $$
 \boxed{y[n]\approx 0.9613e^{j\left(\frac{\pi}{40}n-13.89°\right)}}
 $$
 
-##### Case 2：$f=400$ Hz
+##### Case 2：f=400 Hz
 
 $$
 \omega=\frac{2\pi(400)}{8000}=\frac{\pi}{10}
@@ -741,7 +736,7 @@ $$
 \boxed{y[n]\approx 0.6589e^{j\left(\frac{\pi}{10}n-40.40°\right)}}
 $$
 
-##### Case 3：$f=3000$ Hz
+##### Case 3：f=3000 Hz
 
 $$
 \omega=\frac{2\pi(3000)}{8000}=\frac{3\pi}{4}
@@ -753,7 +748,7 @@ $$
 
 ---
 
-#### 3. $f_s=16000$ Hz
+#### 3. f_s=16000 Hz
 
 當
 
@@ -773,7 +768,7 @@ $$
 \boxed{H(\omega)=\frac{1}{1+\frac{20}{\pi}(1-e^{-j\omega})}}
 $$
 
-##### Case 1：$f=100$ Hz
+##### Case 1：f=100 Hz
 
 $$
 \omega=\frac{2\pi(100)}{16000}=\frac{\pi}{80}
@@ -783,7 +778,7 @@ $$
 \boxed{y[n]\approx 0.9657e^{j\left(\frac{\pi}{80}n-13.97°\right)}}
 $$
 
-##### Case 2：$f=400$ Hz
+##### Case 2：f=400 Hz
 
 $$
 \omega=\frac{2\pi(400)}{16000}=\frac{\pi}{20}
@@ -793,7 +788,7 @@ $$
 \boxed{y[n]\approx 0.6812e^{j\left(\frac{\pi}{20}n-42.72°\right)}}
 $$
 
-##### Case 3：$f=3000$ Hz
+##### Case 3：f=3000 Hz
 
 $$
 \omega=\frac{2\pi(3000)}{16000}=\frac{3\pi}{8}
@@ -963,7 +958,7 @@ $$
 第一項為
 
 $$
-\mathcal{Z}^{-1}\left\{\frac{1}{1-e^{j\omega}z^{-1}}\right\}=e^{j\omega n}u[n].
+Z^{-1}\[\frac{1}{1-e^{j\omega}z^{-1}}]=e^{j\omega n}u[n].
 $$
 
 第二項先整理為
@@ -975,7 +970,7 @@ $$
 因此
 
 $$
-\mathcal{Z}^{-1}\left\{\frac{1}{\tau+RC(1-z^{-1})}\right\}=\frac{1}{RC+\tau}\left(\frac{RC}{RC+\tau}\right)^nu[n].
+Z^{-1}[\frac{1}{\tau+RC(1-z^{-1})}]=\frac{1}{RC+\tau}\left(\frac{RC}{RC+\tau}\right)^nu[n].
 $$
 
 所以輸出訊號為
