@@ -5,15 +5,15 @@
 
 ## Part A：相子暖身題
 ###  A1:用積化和差／和差化積計算 Z(t) = X(t) + Y(t)
-![相子暖身題](image.png)
+![相子暖身題](figure/image.png)
 ---
 ###  A2:用相子（phasor）計算 Z(t) = X(t) + Y(t)，與 A1 比對
-![相子暖身題](image-1.png)
+![相子暖身題](figure/image-1.png)
 ---
 ###  A3:繪製圖形
-![繪製圖形](<螢幕擷取畫面 2026-10-03 171610.png>)
-![繪製圖形](<螢幕擷取畫面 2026-10-03 171649-1.png>)
-![繪製圖形](<螢幕擷取畫面 2026-10-03 171703.png>)
+![繪製圖形](<figure/螢幕擷取畫面 2026-10-03 171610.png>)
+![繪製圖形](<figure/螢幕擷取畫面 2026-10-03 171649-1.png>)
+![繪製圖形](<figure/螢幕擷取畫面 2026-10-03 171703.png>)
 ---
 
 ## Part B：RC 低通濾波器
@@ -33,7 +33,7 @@ $$
 
 ---
 ### B1-手寫
-![手寫](image-2.png)
+![手寫](figure/image-2.png)
 
 ---
 ### B1-LaTex
@@ -66,7 +66,7 @@ $$
 
 ---
 ### B2-手寫
-![手寫](image-3.png)
+![手寫](figure/image-3.png)
 
 ---
 ### B2-LaTex
@@ -323,7 +323,7 @@ $$
 
 ---
 ### B3-手寫
-![手寫](image-4.png)
+![手寫](figure/image-4.png)
 ---
 
 ### B3-LaTex
@@ -602,7 +602,7 @@ $$
 
 ---
 ### B4：手寫
-![alt text](image-5.png)
+![alt text](figure/image-5.png)
 
 ---
 ### B4：LaTex
@@ -853,10 +853,10 @@ $$
 ---
 
 ### B5：手寫
-![手寫](image-7.png)
-![手寫](image-8.png)
-![手寫](image-9.png)
-![手寫](image-10.png)
+![手寫](figure/image-7.png)
+![手寫](figure/image-8.png)
+![手寫](figure/image-9.png)
+![手寫](figure/image-10.png)
 ---
 ### B5：LaTex
 已知
@@ -1138,7 +1138,7 @@ $$
 從表格可以觀察到，當取樣率增加時，離散時間 RC 濾波器的振幅與相位逐漸接近 B3 的連續時間結果。
 ---
 ### B6：手寫
-![手寫](image-11.png)
+![手寫](figure/image-11.png)
 ---
 ### B6：LaTex
 輸入訊號為
@@ -1424,7 +1424,7 @@ $$
 - `fmt ` （取樣率、聲道數、位元深度）。
 - `data` （PCM 音訊資料）。
 
-最後輸出檔名為 `sincos_fs{fs}_f{f}_L{L}.wav` 的雙聲道 WAV 檔。
+輸出檔案放在 `audio/`，例如 `audio/sincos_fs4000_f100_L1.0.wav`。
 
 ---
 
@@ -1433,7 +1433,7 @@ $$
 該程式的輸入為一個既有的 WAV 檔，輸出為濾波後的 WAV 檔：
 
 ```bash
-RC_filtering.exe input.wav output.wav
+RC_filtering.exe audio/input.wav audio/output.wav
 ```
 
 程式會讀取 WAV 檔的檔頭，確認：
@@ -1470,10 +1470,10 @@ $$
 
 `plot_waveforms.py` 會讀取原始訊號與濾波後訊號的 WAV 檔，並將前後波形繪製成對照圖。它的流程如下：
 
-- 讀取 `sincos_fs{fs}_f{f}_L1.0.wav`；
-- 讀取 `filtered_sincos_fs{fs}_f{f}_L1.0.wav`；
+- 從 `audio/` 讀取 `sincos_fs{fs}_f{f}_L1.0.wav`；
+- 從 `audio/` 讀取 `filtered_sincos_fs{fs}_f{f}_L1.0.wav`；
 - 檢查兩者的取樣率與聲道數是否一致；
-- 以程式所在資料夾作為 WAV 檔與輸出圖檔的基準路徑；
+- 以 `audio/` 作為 WAV 檔資料夾，並將輸出圖存到 `figure/`；
 - 根據取樣後的可見頻率，取前 5 個週期繪製兩條時域曲線；
 - 將結果存成 `figure/waveform_fs{fs}_f{f}.png`。
 
@@ -1541,31 +1541,31 @@ $$
 
 ### 濾波結果波形比較圖
 $f_s=4000$ Hz $f=100$ Hz
-![fs=4000 Hz, f=100 Hz](waveform_fs4000_f100.png)
+![fs=4000 Hz, f=100 Hz](figure/waveform_fs4000_f100.png)
 
 $f_s=4000$ Hz $f=400$ Hz
-![fs=4000 Hz, f=400 Hz](waveform_fs4000_f400.png)
+![fs=4000 Hz, f=400 Hz](figure/waveform_fs4000_f400.png)
 
 $f_s=4000$ Hz $f=3000$ Hz
-![fs=4000 Hz, f=3000 Hz](waveform_fs4000_f3000.png)
+![fs=4000 Hz, f=3000 Hz](figure/waveform_fs4000_f3000.png)
 
 $f_s=8000$ Hz $f=100$ Hz
-![fs=8000 Hz, f=100 Hz](waveform_fs8000_f100.png)
+![fs=8000 Hz, f=100 Hz](figure/waveform_fs8000_f100.png)
 
 $f_s=8000$ Hz $f=400$ Hz
-![fs=8000 Hz, f=400 Hz](waveform_fs8000_f400.png)
+![fs=8000 Hz, f=400 Hz](figure/waveform_fs8000_f400.png)
 
 $f_s=8000$ Hz $f=3000$ Hz
-![fs=8000 Hz, f=3000 Hz](waveform_fs8000_f3000.png)
+![fs=8000 Hz, f=3000 Hz](figure/waveform_fs8000_f3000.png)
 
 $f_s=16000$ Hz $f=100$ Hz
-![fs=16000 Hz, f=100 Hz](waveform_fs16000_f100.png)
+![fs=16000 Hz, f=100 Hz](figure/waveform_fs16000_f100.png)
 
 $f_s=16000$ Hz $f=400$ Hz
-![fs=16000 Hz, f=400 Hz](waveform_fs16000_f400.png)
+![fs=16000 Hz, f=400 Hz](figure/waveform_fs16000_f400.png)
 
 $f_s=16000$ Hz $f=3000$ Hz
-![fs=16000 Hz, f=3000 Hz](waveform_fs16000_f3000.png)
+![fs=16000 Hz, f=3000 Hz](figure/waveform_fs16000_f3000.png)
 
 ### 濾波結果比較
 
@@ -1612,5 +1612,5 @@ $$
 - `sine_wav_gen.c`：產生輸入 sine/cosine 雙聲道 WAV。
 - `RC_filtering.c`：使用式 (8) 進行 RC 低通濾波。
 - `plot_waveforms.py`：讀取 WAV 並產生比較圖。
-- `figure/`：手寫解答圖與 Problem 7 的 9 張濾波前後波形圖。
-- `sincos_*.wav` 與 `filtered_sincos_*.wav`：9 組輸入音檔及對應的濾波結果。
+- `figure/`：手寫解答圖與 9 張濾波前後波形圖。
+- `audio/`：9 組輸入 WAV 與 9 組濾波結果。

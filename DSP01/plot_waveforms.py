@@ -17,15 +17,16 @@ def read_wav(file_name):
 
 def main():
     script_folder = Path(__file__).resolve().parent
-    output_folder = script_folder / "fig"
+    audio_folder = script_folder / "audio"
+    output_folder = script_folder / "figure"
     output_folder.mkdir(exist_ok=True)
 
     for sample_rate in (4000, 8000, 16000):
         for frequency in (100, 400, 3000):
-            input_file = script_folder / (
+            input_file = audio_folder / (
                 f"sincos_fs{sample_rate}_f{frequency}_L1.0.wav"
             )
-            filtered_file = script_folder / (
+            filtered_file = audio_folder / (
                 f"filtered_sincos_fs{sample_rate}_f{frequency}_L1.0.wav"
             )
             input_rate, input_samples = read_wav(input_file)
