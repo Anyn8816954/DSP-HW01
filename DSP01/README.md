@@ -20,14 +20,14 @@
 ### 背景
 在此 RC 電路中
 $$
-R=1000\ \Omega,\qquad
+R=1000\ \Omega, \qquad
 C=\frac{1}{2\pi}\cdot\frac{1}{400}\cdot\frac{1}{1000}\ \mathrm{F}
 $$
 
 因此時間常數與截止頻率為
 
 $$
-RC=\frac{1}{2\pi\cdot400}\ \mathrm{s},\qquad
+RC=\frac{1}{2\pi\cdot400}\ \mathrm{s}, \qquad
 f_c=\frac{1}{2\pi RC}=400\ \mathrm{Hz}.
 $$
 
@@ -53,14 +53,14 @@ $$
 因此
 
 $$
-H(\Omega)=\frac{1}{1+j\Omega RC},\qquad
+H(\Omega)=\frac{1}{1+j\Omega RC}, \qquad
 y(t)=\frac{e^{j\Omega t}}{1+j\Omega RC}.
 $$
 
 其振幅與相位分別為
 
 $$
-|H(\Omega)|=\frac{1}{\sqrt{1+(\Omega RC)^2}},\qquad
+|H(\Omega)|=\frac{1}{\sqrt{1+(\Omega RC)^2}}, \qquad
 \angle H(\Omega)=-\tan^{-1}(\Omega RC).
 $$
 
@@ -80,137 +80,73 @@ $$
 RC 低通濾波器的轉移函數為
 
 $$
-H(s)
-=
-\frac{1}{1+RCs}
-=
-\frac{1}{1+\tau s}.
+H(s) = \frac{1}{1+RCs} = \frac{1}{1+\tau s}.
 $$
 
 輸入訊號的 Laplace Transform 為
 
 $$
-\mathcal{L}
-\left\{
-e^{j\Omega t}u(t)
-\right\}
-=
-\frac{1}{s-j\Omega}.
+\mathcal{L}\left\{e^{j\Omega t}u(t)\right\} = \frac{1}{s-j\Omega}.
 $$
 
 因此輸出訊號在 $s$ domain 中可以表示為
 
 $$
-Y(s)
-=
-H(s)X(s).
+Y(s) = H(s)X(s).
 $$
 
 代入 $H(s)$ 與 $X(s)$：
 
 $$
-Y(s)
-=
-\frac{1}{1+\tau s}
-\cdot
-\frac{1}{s-j\Omega}.
+Y(s) = \frac{1}{1+\tau s} \cdot \frac{1}{s-j\Omega}.
 $$
 
 由於
 
 $$
-1+\tau s
-=
-\tau
-\left(
-s+\frac{1}{\tau}
-\right),
+1+\tau s = \tau\left(s+\frac{1}{\tau}\right),
 $$
 
 因此可以將 $Y(s)$ 改寫為
 
 $$
-Y(s)
-=
-\frac{1}{\tau}
-\frac{1}
-{
-\left(s+\frac{1}{\tau}\right)
-(s-j\Omega)
-}.
+Y(s) = \frac{1}{\tau} \frac{1}{\left(s+\frac{1}{\tau}\right)(s-j\Omega)}.
 $$
 
 接著使用部分分式展開（Partial Fraction Expansion）：
 
 $$
-Y(s)
-=
-\frac{1}{\tau}
-\left[
-\frac{A}{s-j\Omega}
-+
-\frac{B}{s+\frac{1}{\tau}}
-\right].
+Y(s) = \frac{1}{\tau}\left[\frac{A}{s-j\Omega} + \frac{B}{s+\frac{1}{\tau}}\right].
 $$
 
 分別求得係數 $A$ 與 $B$：
 
 $$
-A
-=
-\frac{\tau}
-{1+j\Omega\tau}
+A = \frac{\tau}{1+j\Omega\tau}
 $$
 
 以及
 
 $$
-B
-=
--\frac{\tau}
-{1+j\Omega\tau}.
+B = -\frac{\tau}{1+j\Omega\tau}.
 $$
 
 將 $A$、$B$ 代回 $Y(s)$：
 
 $$
-Y(s)
-=
-\frac{1}{\tau}
-\left[
-\frac{\tau}{1+j\Omega\tau}
-\frac{1}{s-j\Omega}
--
-\frac{\tau}{1+j\Omega\tau}
-\frac{1}{s+\frac{1}{\tau}}
-\right].
+Y(s) = \frac{1}{\tau}\left[\frac{\tau}{1+j\Omega\tau}\frac{1}{s-j\Omega} - \frac{\tau}{1+j\Omega\tau}\frac{1}{s+\frac{1}{\tau}}\right].
 $$
 
 整理後可得
 
 $$
-Y(s)
-=
-\frac{1}{1+j\Omega\tau}
-\left[
-\frac{1}{s-j\Omega}
--
-\frac{1}{s+\frac{1}{\tau}}
-\right].
+Y(s) = \frac{1}{1+j\Omega\tau}\left[\frac{1}{s-j\Omega} - \frac{1}{s+\frac{1}{\tau}}\right].
 $$
 
 接著進行 Inverse Laplace Transform：
 
 $$
-\mathcal{L}^{-1}
-\{Y(s)\}
-=
-\frac{1}{1+j\Omega\tau}
-\left[
-e^{j\Omega t}
--
-e^{-t/\tau}
-\right]u(t).
+\mathcal{L}^{-1}\{Y(s)\} = \frac{1}{1+j\Omega\tau}\left[e^{j\Omega t} - e^{-t/\tau}\right]u(t).
 $$
 
 由於
@@ -222,28 +158,13 @@ $$
 因此最後輸出訊號為
 
 $$
-\boxed{
-y(t)
-=
-\frac{1}{1+j\Omega RC}
-\left[
-e^{j\Omega t}
--
-e^{-t/(RC)}
-\right]u(t)
-}
+\boxed{y(t) = \frac{1}{1+j\Omega RC}\left[e^{j\Omega t} - e^{-t/(RC)}\right]u(t)}
 $$
 
 由上式可以將輸出分成穩態響應與暫態響應：
 
 $$
-y(t)
-=
-\left[
-\frac{1}{1+j\Omega RC}e^{j\Omega t}
--
-\frac{1}{1+j\Omega RC}e^{-t/(RC)}
-\right]u(t).
+y(t) = \left[\frac{1}{1+j\Omega RC}e^{j\Omega t} - \frac{1}{1+j\Omega RC}e^{-t/(RC)}\right]u(t).
 $$
 
 #### 穩態響應（Steady-State Response）
@@ -251,20 +172,13 @@ $$
 第一項為穩態響應：
 
 $$
-\boxed{
-y_{ss}(t)
-=
-\frac{1}{1+j\Omega RC}
-e^{j\Omega t}u(t)
-}
+\boxed{y_{ss}(t) = \frac{1}{1+j\Omega RC}e^{j\Omega t}u(t)}
 $$
 
 此項與輸入訊號具有相同的頻率 $\Omega$，但經過 RC 低通濾波器後，其振幅與相位會受到頻率響應
 
 $$
-H(j\Omega)
-=
-\frac{1}{1+j\Omega RC}
+H(j\Omega) = \frac{1}{1+j\Omega RC}
 $$
 
 的影響。
@@ -274,12 +188,7 @@ $$
 第二項為暫態響應：
 
 $$
-\boxed{
-y_{tr}(t)
-=
--\frac{1}{1+j\Omega RC}
-e^{-t/(RC)}u(t)
-}
+\boxed{y_{tr}(t) = -\frac{1}{1+j\Omega RC}e^{-t/(RC)}u(t)}
 $$
 
 其中
@@ -299,8 +208,7 @@ $$
 時，
 
 $$
-e^{-t/(RC)}
-\rightarrow0,
+e^{-t/(RC)}\rightarrow0,
 $$
 
 因此
@@ -312,13 +220,9 @@ $$
 經過足夠長的時間後，系統只剩下穩態響應：
 
 $$
-\boxed{
-y(t)
-\rightarrow
-\frac{1}{1+j\Omega RC}
-e^{j\Omega t}
-}
+\boxed{y(t)\rightarrow \frac{1}{1+j\Omega RC}e^{j\Omega t}}
 $$
+
 與 B1 所求得的穩態響應一樣。
 
 ---
@@ -343,10 +247,9 @@ $$
 由 B1 可知 RC 低通濾波器的頻率響應為
 
 $$
-H(\Omega)
-=
-\frac{1}{1+j\Omega RC}.
+H(\Omega) = \frac{1}{1+j\Omega RC}.
 $$
+
 ---
 
 #### Case 1：$f=100$ Hz
@@ -354,9 +257,10 @@ $$
 當
 
 $$
-f=100\ {\rm Hz},\Omega=2\pi(100)=200\pi.
+f=100\ \mathrm{Hz}, \quad \Omega=2\pi(100)=200\pi.
 $$
 
+由
 
 $$
 RC=\frac{1}{800\pi}
@@ -365,67 +269,35 @@ $$
 可得
 
 $$
-H(\Omega)=\frac{1}
-{
-1+j(2\pi\cdot100)
-\left(
-\frac{1}{800\pi}
-\right)
-}
-=
-\frac{1}{1+j\frac{1}{4}}
-=
-\frac{
-1-j\frac{1}{4}
-}{
-\left(1+j\frac{1}{4}\right)
-\left(1-j\frac{1}{4}\right)
-}=
-\frac{16}{17}
--j\frac{4}{17}
-
+H(\Omega)=\frac{1}{1+j(2\pi\cdot100)\left(\frac{1}{800\pi}\right)} = \frac{1}{1+j\frac{1}{4}} = \frac{1-j\frac{1}{4}}{\left(1+j\frac{1}{4}\right)\left(1-j\frac{1}{4}\right)} = \frac{16}{17} - j\frac{4}{17}
 $$
+
 振幅為
-$$
-|H(\Omega)|=
-\sqrt{
-\left(\frac{16}{17}\right)^2
-+
-\left(-\frac{4}{17}\right)^2
-}
-\approx0.9701
-
 
 $$
+|H(\Omega)|= \sqrt{\left(\frac{16}{17}\right)^2 + \left(-\frac{4}{17}\right)^2} \approx 0.9701
+$$
+
 相位為
-$$
-
-\angle H(\Omega)
-=
-\tan^{-1}
-\left(
-\frac{-4/17}{16/17}
-\right)
-\approx-14.04^\circ
 
 $$
+\angle H(\Omega) = \tan^{-1}\left(\frac{-4/17}{16/17}\right) \approx -14.04°
+$$
+
 輸出訊號為
+
 $$
-
-y(t)=H(\Omega)x(t)=0.9701e^{j(200\pi t-14.04^\circ)}
-
+y(t)=H(\Omega)x(t)=0.9701e^{j(200\pi t-14.04°)}
 $$
 
 ---
-
 
 #### Case 2：$f=400$ Hz
 
 當
 
 $$
-f=400\ {\rm Hz},\quad
-\Omega=2\pi(400)=800\pi.
+f=400\ \mathrm{Hz}, \quad \Omega=2\pi(400)=800\pi.
 $$
 
 由
@@ -438,26 +310,10 @@ $$
 
 $$
 \begin{aligned}
-H(\Omega)
-&=
-\frac{1}
-{
-1+j(2\pi\cdot400)
-\left(
-\frac{1}{800\pi}
-\right)
-}
-\\
-&=
-\frac{1}{1+j}
-\\
-&=
-\frac{1-j}
-{(1+j)(1-j)}
-\\
-&=
-\frac{1}{2}
--j\frac{1}{2}.
+H(\Omega) &= \frac{1}{1+j(2\pi\cdot400)\left(\frac{1}{800\pi}\right)} \\
+&= \frac{1}{1+j} \\
+&= \frac{1-j}{(1+j)(1-j)} \\
+&= \frac{1}{2} - j\frac{1}{2}.
 \end{aligned}
 $$
 
@@ -465,18 +321,9 @@ $$
 
 $$
 \begin{aligned}
-|H(\Omega)|
-&=
-\sqrt{
-\left(\frac{1}{2}\right)^2
-+
-\left(-\frac{1}{2}\right)^2
-}
-\\
-&=
-\frac{1}{\sqrt{2}}
-\\
-&\approx0.7071.
+|H(\Omega)| &= \sqrt{\left(\frac{1}{2}\right)^2 + \left(-\frac{1}{2}\right)^2} \\
+&= \frac{1}{\sqrt{2}} \\
+&\approx 0.7071.
 \end{aligned}
 $$
 
@@ -484,28 +331,15 @@ $$
 
 $$
 \begin{aligned}
-\angle H(\Omega)
-&=
-\tan^{-1}
-\left(
-\frac{-1/2}{1/2}
-\right)
-\\
-&=
--45^\circ.
+\angle H(\Omega) &= \tan^{-1}\left(\frac{-1/2}{1/2}\right) \\
+&= -45°.
 \end{aligned}
 $$
 
 輸出訊號為
 
 $$
-\boxed{
-y(t)
-=
-H(\Omega)x(t)
-=
-0.7071e^{j(800\pi t-45^\circ)}
-}
+\boxed{y(t) = H(\Omega)x(t) = 0.7071e^{j(800\pi t-45°)}}
 $$
 
 ---
@@ -515,8 +349,7 @@ $$
 當
 
 $$
-f=3000\ {\rm Hz},\quad
-\Omega=2\pi(3000)=6000\pi.
+f=3000\ \mathrm{Hz}, \quad \Omega=2\pi(3000)=6000\pi.
 $$
 
 由
@@ -529,31 +362,10 @@ $$
 
 $$
 \begin{aligned}
-H(\Omega)
-&=
-\frac{1}
-{
-1+j(2\pi\cdot3000)
-\left(
-\frac{1}{800\pi}
-\right)
-}
-\\
-&=
-\frac{1}
-{1+j\frac{15}{2}}
-\\
-&=
-\frac{
-1-j\frac{15}{2}
-}{
-\left(1+j\frac{15}{2}\right)
-\left(1-j\frac{15}{2}\right)
-}
-\\
-&=
-\frac{4}{229}
--j\frac{30}{229}.
+H(\Omega) &= \frac{1}{1+j(2\pi\cdot3000)\left(\frac{1}{800\pi}\right)} \\
+&= \frac{1}{1+j\frac{15}{2}} \\
+&= \frac{1-j\frac{15}{2}}{\left(1+j\frac{15}{2}\right)\left(1-j\frac{15}{2}\right)} \\
+&= \frac{4}{229} - j\frac{30}{229}.
 \end{aligned}
 $$
 
@@ -561,15 +373,8 @@ $$
 
 $$
 \begin{aligned}
-|H(\Omega)|
-&=
-\sqrt{
-\left(\frac{4}{229}\right)^2
-+
-\left(-\frac{30}{229}\right)^2
-}
-\\
-&\approx0.1322.
+|H(\Omega)| &= \sqrt{\left(\frac{4}{229}\right)^2 + \left(-\frac{30}{229}\right)^2} \\
+&\approx 0.1322.
 \end{aligned}
 $$
 
@@ -577,27 +382,15 @@ $$
 
 $$
 \begin{aligned}
-\angle H(\Omega)
-&=
-\tan^{-1}
-\left(
-\frac{-30/229}{4/229}
-\right)
-\\
-&\approx-82.41^\circ.
+\angle H(\Omega) &= \tan^{-1}\left(\frac{-30/229}{4/229}\right) \\
+&\approx -82.41°.
 \end{aligned}
 $$
 
 輸出訊號為
 
 $$
-\boxed{
-y(t)
-=
-H(\Omega)x(t)
-=
-0.1322e^{j(6000\pi t-82.41^\circ)}
-}
+\boxed{y(t) = H(\Omega)x(t) = 0.1322e^{j(6000\pi t-82.41°)}}
 $$
 
 ---
@@ -616,22 +409,14 @@ $$
 且
 
 $$
-R=1000\ \Omega,
-\qquad
+R=1000\ \Omega, \qquad
 C=\frac{1}{2\pi\cdot400\cdot1000}.
 $$
 
 由 B2 可知輸出訊號為
 
 $$
-y(t)
-=
-\frac{1}{1+j\Omega RC}
-\left(
-e^{j\Omega t}
--
-e^{-t/(RC)}
-\right)u(t).
+y(t) = \frac{1}{1+j\Omega RC}\left(e^{j\Omega t} - e^{-t/(RC)}\right)u(t).
 $$
 
 由
@@ -643,22 +428,13 @@ $$
 可得
 
 $$
-e^{-t/(RC)}
-=
-e^{-800\pi t}.
+e^{-t/(RC)} = e^{-800\pi t}.
 $$
 
 因此
 
 $$
-y(t)
-=
-\frac{1}{1+j\Omega RC}
-\left(
-e^{j\Omega t}
--
-e^{-800\pi t}
-\right)u(t).
+y(t) = \frac{1}{1+j\Omega RC}\left(e^{j\Omega t} - e^{-800\pi t}\right)u(t).
 $$
 
 ---
@@ -668,9 +444,7 @@ $$
 當
 
 $$
-f=100\ {\rm Hz},
-\qquad
-\Omega=2\pi(100)=200\pi.
+f=100\ \mathrm{Hz}, \qquad \Omega=2\pi(100)=200\pi.
 $$
 
 由
@@ -683,37 +457,16 @@ $$
 
 $$
 \begin{aligned}
-H(\Omega)
-&=
-\frac{1}
-{
-1+j(200\pi)
-\left(
-\frac{1}{800\pi}
-\right)
-}
-\\
-&=
-\frac{1}{1+j\frac14}
-\\
-&=
-0.9701e^{-j14.04^\circ}.
+H(\Omega) &= \frac{1}{1+j(200\pi)\left(\frac{1}{800\pi}\right)} \\
+&= \frac{1}{1+j\frac{1}{4}} \\
+&= 0.9701e^{-j14.04°}.
 \end{aligned}
 $$
 
 因此輸出訊號為
 
 $$
-\boxed{
-y(t)
-=
-0.9701e^{-j14.04^\circ}
-\left(
-e^{j200\pi t}
--
-e^{-800\pi t}
-\right)u(t)
-}
+\boxed{y(t) = 0.9701e^{-j14.04°}\left(e^{j200\pi t} - e^{-800\pi t}\right)u(t)}
 $$
 
 ---
@@ -723,9 +476,7 @@ $$
 當
 
 $$
-f=400\ {\rm Hz},
-\qquad
-\Omega=2\pi(400)=800\pi.
+f=400\ \mathrm{Hz}, \qquad \Omega=2\pi(400)=800\pi.
 $$
 
 由
@@ -738,37 +489,16 @@ $$
 
 $$
 \begin{aligned}
-H(\Omega)
-&=
-\frac{1}
-{
-1+j(800\pi)
-\left(
-\frac{1}{800\pi}
-\right)
-}
-\\
-&=
-\frac{1}{1+j}
-\\
-&=
-0.7071e^{-j45^\circ}.
+H(\Omega) &= \frac{1}{1+j(800\pi)\left(\frac{1}{800\pi}\right)} \\
+&= \frac{1}{1+j} \\
+&= 0.7071e^{-j45°}.
 \end{aligned}
 $$
 
 因此輸出訊號為
 
 $$
-\boxed{
-y(t)
-=
-0.7071e^{-j45^\circ}
-\left(
-e^{j800\pi t}
--
-e^{-800\pi t}
-\right)u(t)
-}
+\boxed{y(t) = 0.7071e^{-j45°}\left(e^{j800\pi t} - e^{-800\pi t}\right)u(t)}
 $$
 
 ---
@@ -778,9 +508,7 @@ $$
 當
 
 $$
-f=3000\ {\rm Hz},
-\qquad
-\Omega=2\pi(3000)=6000\pi.
+f=3000\ \mathrm{Hz}, \qquad \Omega=2\pi(3000)=6000\pi.
 $$
 
 由
@@ -793,41 +521,19 @@ $$
 
 $$
 \begin{aligned}
-H(\Omega)
-&=
-\frac{1}
-{
-1+j(6000\pi)
-\left(
-\frac{1}{800\pi}
-\right)
-}
-\\
-&=
-\frac{1}{1+j\frac{15}{2}}
-\\
-&=
-0.1322e^{-j82.41^\circ}.
+H(\Omega) &= \frac{1}{1+j(6000\pi)\left(\frac{1}{800\pi}\right)} \\
+&= \frac{1}{1+j\frac{15}{2}} \\
+&= 0.1322e^{-j82.41°}.
 \end{aligned}
 $$
 
 因此輸出訊號為
 
 $$
-\boxed{
-y(t)
-=
-0.1322e^{-j82.41^\circ}
-\left(
-e^{j6000\pi t}
--
-e^{-800\pi t}
-\right)u(t)
-}
+\boxed{y(t) = 0.1322e^{-j82.41°}\left(e^{j6000\pi t} - e^{-800\pi t}\right)u(t)}
 $$
 
 ---
-
 
 三種輸入頻率的暫態部分皆包含
 
@@ -848,6 +554,7 @@ $$
 $$
 e^{-800\pi t}\rightarrow0,
 $$
+
 因此暫態響應逐漸消失，最後只剩下 B3 所求得的穩態響應。
 
 ---
@@ -859,10 +566,11 @@ $$
 ![手寫](figure/image-10.png)
 ---
 ### B5：LaTex
+
 已知
 
 $$
-y[n]=\frac{RC}{RC+\tau}y[n-1]+\frac{\tau}{RC+\tau}x[n],\qquad \tau=T_s=\frac{1}{f_s}
+y[n]=\frac{RC}{RC+\tau}y[n-1]+\frac{\tau}{RC+\tau}x[n], \qquad \tau=T_s=\frac{1}{f_s}
 $$
 
 輸入訊號為
@@ -874,7 +582,7 @@ $$
 令
 
 $$
-a=\frac{RC}{RC+\tau},\qquad b=\frac{\tau}{RC+\tau},
+a=\frac{RC}{RC+\tau}, \qquad b=\frac{\tau}{RC+\tau},
 $$
 
 則
@@ -910,8 +618,7 @@ $$
 則
 
 $$
-H(\omega)=\frac{\tau}{\tau+RC(1-e^{-j\omega})}
-,RC=\frac{1}{800\pi}
+H(\omega)=\frac{\tau}{\tau+RC(1-e^{-j\omega})}, \quad RC=\frac{1}{800\pi}
 $$
 
 ---
@@ -921,7 +628,7 @@ $$
 當
 
 $$
-f_s=4000\ {\rm Hz},\qquad \tau=\frac{1}{4000},\qquad \omega=\frac{2\pi f}{4000},
+f_s=4000\ \mathrm{Hz}, \qquad \tau=\frac{1}{4000}, \qquad \omega=\frac{2\pi f}{4000},
 $$
 
 可得
@@ -933,12 +640,10 @@ $$
 因此
 
 $$
-\boxed{
-H(\omega)=\frac{1}{1+\frac{5}{\pi}(1-e^{-j\omega})}
-}
+\boxed{H(\omega)=\frac{1}{1+\frac{5}{\pi}(1-e^{-j\omega})}}
 $$
 
-#### Case 1：$f=100$ Hz
+##### Case 1：$f=100$ Hz
 
 $$
 \omega=\frac{2\pi(100)}{4000}=\frac{\pi}{20}
@@ -949,12 +654,10 @@ H\left(\frac{\pi}{20}\right)=\frac{1}{1+\frac{5}{\pi}(1-e^{-j\pi/20})}
 $$
 
 $$
-\boxed{
-y[n]\approx0.9528e^{j\left(\frac{\pi}{20}n-13.72^\circ\right)}
-}
+\boxed{y[n]\approx 0.9528e^{j\left(\frac{\pi}{20}n-13.72°\right)}}
 $$
 
-#### Case 2：$f=400$ Hz
+##### Case 2：$f=400$ Hz
 
 $$
 \omega=\frac{2\pi(400)}{4000}=\frac{\pi}{5}
@@ -965,12 +668,10 @@ H\left(\frac{\pi}{5}\right)=\frac{1}{1+\frac{5}{\pi}(1-e^{-j\pi/5})}
 $$
 
 $$
-\boxed{
-y[n]\approx0.6231e^{j\left(\frac{\pi}{5}n-35.66^\circ\right)}
-}
+\boxed{y[n]\approx 0.6231e^{j\left(\frac{\pi}{5}n-35.66°\right)}}
 $$
 
-#### Case 3：$f=3000$ Hz
+##### Case 3：$f=3000$ Hz
 
 $$
 \omega=\frac{2\pi(3000)}{4000}=\frac{3\pi}{2}
@@ -981,15 +682,13 @@ H\left(\frac{3\pi}{2}\right)=\frac{1}{1+\frac{5}{\pi}(1-e^{-j3\pi/2})}
 $$
 
 $$
-\boxed{
-y[n]\approx0.3288e^{j\left(\frac{3\pi}{2}n+31.56^\circ\right)}
-}
+\boxed{y[n]\approx 0.3288e^{j\left(\frac{3\pi}{2}n+31.56°\right)}}
 $$
 
 此時 Nyquist frequency 為
 
 $$
-f_N=\frac{4000}{2}=2000\ {\rm Hz},
+f_N=\frac{4000}{2}=2000\ \mathrm{Hz},
 $$
 
 而
@@ -1007,7 +706,7 @@ $$
 當
 
 $$
-f_s=8000\ {\rm Hz},\qquad \tau=\frac{1}{8000},\qquad \omega=\frac{2\pi f}{8000},
+f_s=8000\ \mathrm{Hz}, \qquad \tau=\frac{1}{8000}, \qquad \omega=\frac{2\pi f}{8000},
 $$
 
 可得
@@ -1019,45 +718,37 @@ $$
 因此
 
 $$
-\boxed{
-H(\omega)=\frac{1}{1+\frac{10}{\pi}(1-e^{-j\omega})}
-}
+\boxed{H(\omega)=\frac{1}{1+\frac{10}{\pi}(1-e^{-j\omega})}}
 $$
 
-#### Case 1：$f=100$ Hz
+##### Case 1：$f=100$ Hz
 
 $$
 \omega=\frac{2\pi(100)}{8000}=\frac{\pi}{40}
 $$
 
 $$
-\boxed{
-y[n]\approx0.9613e^{j\left(\frac{\pi}{40}n-13.89^\circ\right)}
-}
+\boxed{y[n]\approx 0.9613e^{j\left(\frac{\pi}{40}n-13.89°\right)}}
 $$
 
-#### Case 2：$f=400$ Hz
+##### Case 2：$f=400$ Hz
 
 $$
 \omega=\frac{2\pi(400)}{8000}=\frac{\pi}{10}
 $$
 
 $$
-\boxed{
-y[n]\approx0.6589e^{j\left(\frac{\pi}{10}n-40.40^\circ\right)}
-}
+\boxed{y[n]\approx 0.6589e^{j\left(\frac{\pi}{10}n-40.40°\right)}}
 $$
 
-#### Case 3：$f=3000$ Hz
+##### Case 3：$f=3000$ Hz
 
 $$
 \omega=\frac{2\pi(3000)}{8000}=\frac{3\pi}{4}
 $$
 
 $$
-\boxed{
-y[n]\approx0.1467e^{j\left(\frac{3\pi}{4}n-19.28^\circ\right)}
-}
+\boxed{y[n]\approx 0.1467e^{j\left(\frac{3\pi}{4}n-19.28°\right)}}
 $$
 
 ---
@@ -1067,7 +758,7 @@ $$
 當
 
 $$
-f_s=16000\ {\rm Hz},\qquad \tau=\frac{1}{16000},\qquad \omega=\frac{2\pi f}{16000},
+f_s=16000\ \mathrm{Hz}, \qquad \tau=\frac{1}{16000}, \qquad \omega=\frac{2\pi f}{16000},
 $$
 
 可得
@@ -1079,45 +770,37 @@ $$
 因此
 
 $$
-\boxed{
-H(\omega)=\frac{1}{1+\frac{20}{\pi}(1-e^{-j\omega})}
-}
+\boxed{H(\omega)=\frac{1}{1+\frac{20}{\pi}(1-e^{-j\omega})}}
 $$
 
-#### Case 1：$f=100$ Hz
+##### Case 1：$f=100$ Hz
 
 $$
 \omega=\frac{2\pi(100)}{16000}=\frac{\pi}{80}
 $$
 
 $$
-\boxed{
-y[n]\approx0.9657e^{j\left(\frac{\pi}{80}n-13.97^\circ\right)}
-}
+\boxed{y[n]\approx 0.9657e^{j\left(\frac{\pi}{80}n-13.97°\right)}}
 $$
 
-#### Case 2：$f=400$ Hz
+##### Case 2：$f=400$ Hz
 
 $$
 \omega=\frac{2\pi(400)}{16000}=\frac{\pi}{20}
 $$
 
 $$
-\boxed{
-y[n]\approx0.6812e^{j\left(\frac{\pi}{20}n-42.72^\circ\right)}
-}
+\boxed{y[n]\approx 0.6812e^{j\left(\frac{\pi}{20}n-42.72°\right)}}
 $$
 
-#### Case 3：$f=3000$ Hz
+##### Case 3：$f=3000$ Hz
 
 $$
 \omega=\frac{2\pi(3000)}{16000}=\frac{3\pi}{8}
 $$
 
 $$
-\boxed{
-y[n]\approx0.1303e^{j\left(\frac{3\pi}{8}n-50.03^\circ\right)}
-}
+\boxed{y[n]\approx 0.1303e^{j\left(\frac{3\pi}{8}n-50.03°\right)}}
 $$
 
 ---
@@ -1127,21 +810,24 @@ $$
 | 頻率 $f$ | Continuous B3 | $f_s=4000$ | $f_s=8000$ | $f_s=16000$ |
 |---|---:|---:|---:|---:|
 | 100 Hz 振幅 | 0.9701 | 0.9528 | 0.9613 | 0.9657 |
-| 100 Hz 相位 | $-14.04^\circ$ | $-13.72^\circ$ | $-13.89^\circ$ | $-13.97^\circ$ |
+| 100 Hz 相位 | $-14.04°$ | $-13.72°$ | $-13.89°$ | $-13.97°$ |
 | 400 Hz 振幅 | 0.7071 | 0.6231 | 0.6589 | 0.6812 |
-| 400 Hz 相位 | $-45.00^\circ$ | $-35.66^\circ$ | $-40.40^\circ$ | $-42.72^\circ$ |
+| 400 Hz 相位 | $-45.00°$ | $-35.66°$ | $-40.40°$ | $-42.72°$ |
 | 3000 Hz 振幅 | 0.1322 | 0.3288* | 0.1467 | 0.1303 |
-| 3000 Hz 相位 | $-82.41^\circ$ | $+31.56^\circ$* | $-19.28^\circ$ | $-50.03^\circ$ |
+| 3000 Hz 相位 | $-82.41°$ | $+31.56°$* | $-19.28°$ | $-50.03°$ |
 
 `*`：$f_s=4000$ Hz 時，3000 Hz 超過 Nyquist frequency，因此發生 aliasing。
 
 從表格可以觀察到，當取樣率增加時，離散時間 RC 濾波器的振幅與相位逐漸接近 B3 的連續時間結果。
+
 ---
 ### B6：手寫
 ![手寫](figure/image-11.png)
 ---
 ### B6：LaTex
+
 輸入訊號為
+
 $$
 x[n]=e^{j\omega n}u[n]
 $$
@@ -1161,7 +847,7 @@ $$
 對應的系統轉移函數為
 
 $$
-H(z)=\frac{\tau}{\tau+RC(1-z^{-1})},\qquad z=e^{j\omega}.
+H(z)=\frac{\tau}{\tau+RC(1-z^{-1})}, \qquad z=e^{j\omega}.
 $$
 
 ---
@@ -1183,7 +869,7 @@ $$
 利用等比級數
 
 $$
-\sum_{n=0}^{\infty}t^n=\frac{1}{1-t},\qquad |t|<1,
+\sum_{n=0}^{\infty}t^n=\frac{1}{1-t}, \qquad |t|<1,
 $$
 
 令
@@ -1195,9 +881,7 @@ $$
 因此
 
 $$
-\boxed{
-X(z)=\frac{1}{1-e^{j\omega}z^{-1}},\qquad |z|>1
-}
+\boxed{X(z)=\frac{1}{1-e^{j\omega}z^{-1}}, \qquad |z|>1}
 $$
 
 ---
@@ -1235,9 +919,7 @@ $$
 可得
 
 $$
-\boxed{
-A=\frac{\tau}{\tau+RC(1-e^{-j\omega})}
-}
+\boxed{A=\frac{\tau}{\tau+RC(1-e^{-j\omega})}}
 $$
 
 因此
@@ -1265,9 +947,7 @@ $$
 因此
 
 $$
-\boxed{
-B=\frac{\tau}{1-e^{j\omega}\left(1+\frac{\tau}{RC}\right)}
-}
+\boxed{B=\frac{\tau}{1-e^{j\omega}\left(1+\frac{\tau}{RC}\right)}}
 $$
 
 所以
@@ -1307,9 +987,7 @@ $$
 整理後可得
 
 $$
-\boxed{
-y[n]=\frac{\tau}{\tau+RC(1-e^{-j\omega})}\left[e^{j\omega n}-e^{-j\omega}\left(\frac{RC}{RC+\tau}\right)^{n+1}\right]u[n]
-}
+\boxed{y[n]=\frac{\tau}{\tau+RC(1-e^{-j\omega})}\left[e^{j\omega n}-e^{-j\omega}\left(\frac{RC}{RC+\tau}\right)^{n+1}\right]u[n]}
 $$
 
 ---
@@ -1317,9 +995,7 @@ $$
 #### 穩態響應（Steady-State Response）
 
 $$
-\boxed{
-y_{ss}[n]=\frac{\tau}{\tau+RC(1-e^{-j\omega})}e^{j\omega n}u[n]
-}
+\boxed{y_{ss}[n]=\frac{\tau}{\tau+RC(1-e^{-j\omega})}e^{j\omega n}u[n]}
 $$
 
 此項即為 B5 所求得的離散時間穩態響應。
@@ -1327,9 +1003,7 @@ $$
 #### 暫態響應（Transient Response）
 
 $$
-\boxed{
-y_{tr}[n]=-\frac{\tau}{\tau+RC(1-e^{-j\omega})}e^{-j\omega}\left(\frac{RC}{RC+\tau}\right)^{n+1}u[n]
-}
+\boxed{y_{tr}[n]=-\frac{\tau}{\tau+RC(1-e^{-j\omega})}e^{-j\omega}\left(\frac{RC}{RC+\tau}\right)^{n+1}u[n]}
 $$
 
 由於
@@ -1377,17 +1051,17 @@ $$
 當取樣率增加，也就是 $\tau\rightarrow0$ 時，
 
 $$
-\boxed{
-\left(\frac{RC}{RC+\tau}\right)^n\rightarrow e^{-t/(RC)}
-}
+\boxed{\left(\frac{RC}{RC+\tau}\right)^n\rightarrow e^{-t/(RC)}}
 $$
 
 因此取樣率越高，離散時間的暫態響應會越接近 B4 的連續時間暫態響應。
 
+---
 
-### B7:C 程式模擬與結果討論
+### B7：C 程式模擬與結果討論
 
 #### 程式說明
+
 本題主要分成三個部分：
 
 1. `sine_wav_gen.c`：產生各種頻率與取樣率的雙聲道輸入訊號。
@@ -1413,7 +1087,7 @@ sine_wav_gen.exe fs f L out_fn
 依據公式
 
 $$
-x[n] = A\sin(2\pi f t_n),\qquad
+x[n] = A\sin(2\pi f t_n), \qquad
 y[n] = A\cos(2\pi f t_n)
 $$
 
@@ -1454,9 +1128,9 @@ $$
 其中
 
 $$
-\tau = \frac{1}{f_s},\qquad
-RC = 1000\cdot\frac{1}{2\pi\cdot 400\cdot 1000},\qquad
-a = \frac{RC}{RC + \tau},\qquad
+\tau = \frac{1}{f_s}, \qquad
+RC = 1000\cdot\frac{1}{2\pi\cdot 400\cdot 1000}, \qquad
+a = \frac{RC}{RC + \tau}, \qquad
 b = \frac{\tau}{RC + \tau}.
 $$
 
@@ -1477,7 +1151,7 @@ $$
 - 根據取樣後的可見頻率，取前 5 個週期繪製兩條時域曲線；
 - 將結果存成 `figure/waveform_fs{fs}_f{f}.png`。
 
-若輸入頻率高於 Nyquist 頻率，圖中會以取樣後的混疊頻率顯示波形。例如 $f_s=4000$ Hz、$f=3000$ Hz 時，取樣波形呈現為 1000 Hz，因此繪圖區間取該頻率的 5 個週期。
+若輸入頻率高於 Nyquist 頻率，圖中會以取樣後的混疊頻率顯示波形。
 
 圖中有兩個圖，分別顯示：
 - Left channel: sine；
@@ -1492,79 +1166,78 @@ $$
 離散系統的穩態頻率響應為
 
 $$
-H_d(\omega)=\frac{b}{1-ae^{-j\omega}},\qquad \omega=\frac{2\pi f}{f_s}.
+H_d(\omega)=\frac{b}{1-ae^{-j\omega}}, \qquad \omega=\frac{2\pi f}{f_s}.
 $$
- 
+
 $f_s=4000$ Hz
 
 | 頻率 $f$ | B3 振幅 | B5 振幅 | B3 相位 | B5 相位 |
 |---:|---:|---:|---:|---:|
-| 100 Hz | 0.9701 | 0.9528 | $-14.04^\circ$ | $-13.72^\circ$ |
-| 400 Hz | 0.7071 | 0.6231 | $-45.00^\circ$ | $-35.66^\circ$ |
-| 3000 Hz | 0.1322 | 0.3288* | $-82.41^\circ$ | $+31.56^\circ$* |
+| 100 Hz | 0.9701 | 0.9528 | $-14.04°$ | $-13.72°$ |
+| 400 Hz | 0.7071 | 0.6231 | $-45.00°$ | $-35.66°$ |
+| 3000 Hz | 0.1322 | 0.3288* | $-82.41°$ | $+31.56°$* |
 
 $f_s=8000$ Hz
 
 | 頻率 $f$ | B3 振幅 | B5 振幅 | B3 相位 | B5 相位 |
 |---:|---:|---:|---:|---:|
-| 100 Hz | 0.9701 | 0.9613 | $-14.04^\circ$ | $-13.89^\circ$ |
-| 400 Hz | 0.7071 | 0.6589 | $-45.00^\circ$ | $-40.40^\circ$ |
-| 3000 Hz | 0.1322 | 0.1467 | $-82.41^\circ$ | $-19.28^\circ$ |
+| 100 Hz | 0.9701 | 0.9613 | $-14.04°$ | $-13.89°$ |
+| 400 Hz | 0.7071 | 0.6589 | $-45.00°$ | $-40.40°$ |
+| 3000 Hz | 0.1322 | 0.1467 | $-82.41°$ | $-19.28°$ |
 
 $f_s=16000$ Hz
 
 | 頻率 $f$ | B3 振幅 | B5 振幅 | B3 相位 | B5 相位 |
 |---:|---:|---:|---:|---:|
-| 100 Hz | 0.9701 | 0.9657 | $-14.04^\circ$ | $-13.97^\circ$ |
-| 400 Hz | 0.7071 | 0.6812 | $-45.00^\circ$ | $-42.72^\circ$ |
-| 3000 Hz | 0.1322 | 0.1303 | $-82.41^\circ$ | $-50.03^\circ$ |
+| 100 Hz | 0.9701 | 0.9657 | $-14.04°$ | $-13.97°$ |
+| 400 Hz | 0.7071 | 0.6812 | $-45.00°$ | $-42.72°$ |
+| 3000 Hz | 0.1322 | 0.1303 | $-82.41°$ | $-50.03°$ |
 
 `*`：當 $f_s=4000$ Hz 時，Nyquist frequency 為 $2000$ Hz，而輸入頻率為 $3000$ Hz，因此發生 aliasing。
 
 連續時間的振幅與相位參考值（B3）分別是：
 
-100 Hz 為 $0.9701$、$-14.04^\circ$；400 Hz 為 $0.7071$、$-45.00^\circ$；3000 Hz 為 $0.1322$、$-82.41^\circ$。
+100 Hz 為 $0.9701$、$-14.04°$；400 Hz 為 $0.7071$、$-45.00°$；3000 Hz 為 $0.1322$、$-82.41°$。
 
-在 100 Hz，離散結果已接近連續時間結果；提高取樣率時，100 Hz 與 400 Hz 的離散振幅也逐漸接近類比值。3000 Hz 的相位差仍明顯，顯示取樣率與離散化方式都會影響高頻結果。
+在 100 Hz，離散結果已接近連續時間結果；提高取樣率時，100 Hz 與 400 Hz 的離散振幅也逐漸接近類比值。3000 Hz 的相位差仍明顯，顯示取樣率與離散化方式對高頻響應的影響。
 
 RC 低通的截止頻率是 400 Hz。在此頻率，類比振幅比為
 
-
 $$
-|H(2\pi f_c)|=\frac{1}{\sqrt{2}}\approx0.7071,
-\qquad 20\log_{10}(0.7071)\approx-3.01\ \mathrm{dB}.
+|H(2\pi f_c)|=\frac{1}{\sqrt{2}}\approx 0.7071, \qquad 20\log_{10}(0.7071)\approx -3.01\ \mathrm{dB}.
 $$
 
-這就是 $-3\ \mathrm{dB}$ 截止點：振幅降為約 $0.707$，功率約為原來的一半。100 Hz 低於截止頻率，衰減較小；3000 Hz 高於截止頻率，衰減較大。
+這就是 $-3$ dB 截止點：振幅降為約 $0.707$，功率約為原來的一半。100 Hz 低於截止頻率，衰減較小；3000 Hz 高於截止頻率，衰減較大。
 
-當 $f_s=4000$ Hz 時，Nyquist 頻率為 $2000$ Hz，3000 Hz 高於 Nyquist 頻率。取樣後它會混疊成 $-1000$ Hz（以實數波形觀察時頻率為 1000 Hz），所以這組不能當成原本連續時間 3000 Hz 訊號的取樣。其他取樣率的 Nyquist 頻率分別是 4000 Hz 與 8000 Hz，3000 Hz 訊號不會發生此種混疊。
+當 $f_s=4000$ Hz 時，Nyquist 頻率為 $2000$ Hz，3000 Hz 高於 Nyquist 頻率。取樣後它會混疊成 $-1000$ Hz（以實數波形觀察時頻率為 1000 Hz）。
 
 ### 濾波結果波形比較圖
-$f_s=4000$ Hz $f=100$ Hz
+
+$f_s=4000$ Hz, $f=100$ Hz
 ![fs=4000 Hz, f=100 Hz](figure/waveform_fs4000_f100.png)
 
-$f_s=4000$ Hz $f=400$ Hz
+$f_s=4000$ Hz, $f=400$ Hz
 ![fs=4000 Hz, f=400 Hz](figure/waveform_fs4000_f400.png)
 
-$f_s=4000$ Hz $f=3000$ Hz
+$f_s=4000$ Hz, $f=3000$ Hz
 ![fs=4000 Hz, f=3000 Hz](figure/waveform_fs4000_f3000.png)
 
-$f_s=8000$ Hz $f=100$ Hz
+$f_s=8000$ Hz, $f=100$ Hz
 ![fs=8000 Hz, f=100 Hz](figure/waveform_fs8000_f100.png)
 
-$f_s=8000$ Hz $f=400$ Hz
+$f_s=8000$ Hz, $f=400$ Hz
 ![fs=8000 Hz, f=400 Hz](figure/waveform_fs8000_f400.png)
 
-$f_s=8000$ Hz $f=3000$ Hz
+$f_s=8000$ Hz, $f=3000$ Hz
 ![fs=8000 Hz, f=3000 Hz](figure/waveform_fs8000_f3000.png)
 
-$f_s=16000$ Hz $f=100$ Hz
+$f_s=16000$ Hz, $f=100$ Hz
 ![fs=16000 Hz, f=100 Hz](figure/waveform_fs16000_f100.png)
 
-$f_s=16000$ Hz $f=400$ Hz
+$f_s=16000$ Hz, $f=400$ Hz
 ![fs=16000 Hz, f=400 Hz](figure/waveform_fs16000_f400.png)
 
-$f_s=16000$ Hz $f=3000$ Hz
+$f_s=16000$ Hz, $f=3000$ Hz
 ![fs=16000 Hz, f=3000 Hz](figure/waveform_fs16000_f3000.png)
 
 ### 濾波結果比較
@@ -1579,7 +1252,7 @@ $f_s=16000$ Hz $f=3000$ Hz
 
 其中 $f_s=4000$ Hz 時，3000 Hz 超過 Nyquist frequency，因此發生 aliasing。
 
-在低頻 100 Hz 時，離散結果與 Analog 已相當接近；在截止頻率 400 Hz 時，取樣率越高，振幅越接近理論值 $1/\sqrt{2}\approx0.7071$；在 3000 Hz 時，較高取樣率可得到較接近 Analog 的濾波結果。
+在低頻 100 Hz 時，離散結果與 Analog 已相當接近；在截止頻率 400 Hz 時，取樣率越高，振幅越接近理論值 $1/\sqrt{2}\approx 0.7071$；在 3000 Hz 時，較高取樣率可以大幅改善頻率響應的精確度。
 
 ---
 
